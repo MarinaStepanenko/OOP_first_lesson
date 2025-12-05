@@ -33,6 +33,12 @@ project_root/
 - `quantity` (int) - количество товара в наличии
 
 **Пример использования:**
+class Product:
+pass
+
+class Product:
+pass
+
 ```python
 product = Product(
     name="LG PC",
@@ -64,7 +70,7 @@ product = Product(
 
 ### Сигнатура метода
 ```python
-def __init__(self, name: str, description: str, products: list) -> None
+def __init__(self, name: str, description: str, products: list) -> None:
 ```
 ## Параметры конструктора
 
