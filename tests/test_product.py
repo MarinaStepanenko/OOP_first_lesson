@@ -73,3 +73,11 @@ def test_price_setter_zero(capsys, monkeypatch):
     product3 = Product("iPhone11", "Смартфон", 50000, 10)
     product3.price = 60000
     assert product3.price == 60000
+
+
+def test_product_str(first_product):
+    assert str(first_product) == "LG PC, 156.78 руб. Остаток: 2 шт."
+
+
+def test_product_add(first_product, second_product):
+    assert first_product + second_product == 18259.5

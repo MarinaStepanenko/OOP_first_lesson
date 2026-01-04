@@ -1,3 +1,5 @@
+import pytest
+
 from src.category import Category
 from src.product import Product
 from tests.conftest import second_product
@@ -72,3 +74,16 @@ def test_getter_many_products():
     assert isinstance(result, str)
     lines = result.split("\n")
     assert len(lines) == 3
+
+
+def test_category_str(category):
+    assert str(category) == "Телефоны, количество продуктов: 6 шт."
+
+
+def test_product_iterator(product_iterator):
+    iter(product_iterator)
+    assert product_iterator.index == 0
+    assert next(product_iterator).name == "Samsung Phone"
+
+    with pytest.raises(StopIteration):
+        next(product_iterator)
