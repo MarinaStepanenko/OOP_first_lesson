@@ -43,6 +43,11 @@ def test_add_products():
     assert Category.product_count == 1
 
 
+# def test_add_products_error(category):
+#     with pytest.raises(TypeError):
+#         result =
+
+
 def test_add_products_empty():
     Category.product_count = 0
     first_product = Product(
