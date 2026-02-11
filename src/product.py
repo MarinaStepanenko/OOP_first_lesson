@@ -1,17 +1,17 @@
 from typing import Any
 
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
 
-class Product:
+
+class Product(PrintMixin, BaseProduct):
     name: str
     description: str
     price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
+        super().__init__(name, description, price, quantity)
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
@@ -19,23 +19,6 @@ class Product:
     def __add__(self, other):
         total_price = (self.price * self.quantity) + (other.price * other.quantity)
         return total_price
-
-    @property
-    def price(self):
-        return self.__price
-
-    @price.setter
-    def price(self, value):
-        if self.__price <= 0 or value <= 0:
-            print("Цена не должна быть нулевая или отрицательная")
-        if value < self.__price:
-            answer = input(
-                "Введите 'y' если подтверждаете новую цену, 'n' если хотите отменить"
-            )
-            if answer == "y":
-                self.__price = value
-        else:
-            self.__price = value
 
     @classmethod
     def new_product(cls, parameters: dict, product_list: Any | None = None):
