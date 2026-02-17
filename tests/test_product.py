@@ -1,4 +1,7 @@
+import pytest
+
 from src.product import Product
+from src.smartphone import Smartphone
 
 
 def test_product_init(first_product, second_product):
@@ -81,3 +84,19 @@ def test_product_str(first_product):
 
 def test_product_add(first_product, second_product):
     assert first_product + second_product == 18259.5
+
+
+def test_product_init_zero():
+    with pytest.raises(
+        ValueError, match="Товар с нулевым количеством не может быть добавлен"
+    ):
+        smart1 = Smartphone(
+            name="New",
+            description="best for you",
+            price=1000,
+            quantity=0,
+            efficiency=55.5,
+            model="S245",
+            memory=120,
+            color="white",
+        )

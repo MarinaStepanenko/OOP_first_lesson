@@ -34,3 +34,14 @@ class Category:
         for product in self.__products:
             products_list.append(str(product))
         return "\n".join(products_list)
+
+    def middle_price(self):
+        try:
+            middle_price = round(
+                sum(product.price for product in self.__products)
+                / len(self.__products),
+                1,
+            )
+        except ZeroDivisionError:
+            return 0
+        return middle_price
