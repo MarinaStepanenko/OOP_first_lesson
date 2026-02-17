@@ -43,9 +43,9 @@ def test_add_products():
     assert Category.product_count == 1
 
 
-# def test_add_products_error(category):
-#     with pytest.raises(TypeError):
-#         result =
+def test_add_products_error(category, category1):
+    with pytest.raises(TypeError):
+        category.add_product(category1)
 
 
 def test_add_products_empty():
@@ -92,3 +92,11 @@ def test_product_iterator(product_iterator):
 
     with pytest.raises(StopIteration):
         next(product_iterator)
+
+
+def test_middle_price(empty_list, smartphone1):
+    assert empty_list.middle_price() == 0
+    assert (
+        Category("Смартфоны", "Категория смартфонов", [smartphone1]).middle_price()
+        == 1000
+    )

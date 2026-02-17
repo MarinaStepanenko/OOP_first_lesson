@@ -25,6 +25,15 @@ def second_product():
 
 
 @pytest.fixture
+def category1(first_product):
+    return Category(
+        name="Планшеты",
+        description="Современные планшеты",
+        products=[first_product],
+    )
+
+
+@pytest.fixture
 def category(second_product, first_product):
     a = Category(
         name="Планшеты",
@@ -95,3 +104,22 @@ def grass1():
         germination_period="3 дня",
         color="голубой",
     )
+
+
+@pytest.fixture
+def zero_quantity():
+    return Smartphone(
+        name="New",
+        description="best for you",
+        price=1000,
+        quantity=0,
+        efficiency=55.5,
+        model="S245",
+        memory=120,
+        color="white",
+    )
+
+
+@pytest.fixture
+def empty_list():
+    return Category("Пустая категория", "Категория без продуктов", [])
